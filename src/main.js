@@ -635,20 +635,45 @@ window.addEventListener('langchange', () => {
   const V = './assets/videos/cine.mp4';
   fetch(V, { method: 'HEAD' }).then((r) => { if (!r.ok) throw new Error('x'); v.src = V; v.load(); }).catch(() => {});
   const CH = [0, .32, .55, .82];
+  let tgt = 0, curT = 0;
+  const tickFilm = () => {
+    curT += (tgt - curT) * 0.14;
+    if (v.duration && isFinite(v.duration)) v.currentTime = curT * Math.max(0, v.duration - .05);
+    requestAnimationFrame(tickFilm);
+  };
+  requestAnimationFrame(tickFilm);
   ScrollTrigger.create({
     trigger: document.documentElement, start: 0, end: 'max', scrub: .4,
     onUpdate: (self) => {
       const p = self.progress;
-      if (v.duration && isFinite(v.duration)) v.currentTime = p * Math.max(0, v.duration - .05);
+      tgt = p;
       if (prog) prog.style.height = (p * 100).toFixed(2) + '%';
       const ci = p < CH[1] ? 0 : p < CH[2] ? 1 : p < CH[3] ? 2 : 3;
       if (chEl) chEl.textContent = 'CH 0' + (ci + 1);
+      const fl = document.getElementById('film-layer'); if (fl) fl.dataset.ch = String(ci);
     },
   });
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.fromTo(v, { scale: 1.1 }, {
+      scale: 1, ease: 'none',
+      scrollTrigger: { trigger: document.documentElement, start: 0, end: 'max', scrub: .8 },
+    });
+  }
+  let decTok = 0;
+  const GL = '\u25ae\u25af/<>\u00b7\u201401#';
+  const decodeSec = (txt) => {
+    const tok = ++decTok; let f = 0; const total = 12;
+    const iv = setInterval(() => {
+      if (tok !== decTok) { clearInterval(iv); return; }
+      f++;
+      secEl.textContent = txt.split('').map((c, i) => (c === ' ' ? ' ' : (i < (f / total) * txt.length ? c : GL[(Math.random() * GL.length) | 0]))).join('');
+      if (f >= total) { clearInterval(iv); secEl.textContent = txt; }
+    }, 30);
+  };
   document.querySelectorAll('section[id]').forEach((sec) => {
     ScrollTrigger.create({
       trigger: sec, start: 'top 55%', end: 'bottom 55%',
-      onToggle: (st) => { if (st.isActive && secEl) secEl.textContent = (sec.id || '').toUpperCase(); },
+      onToggle: (st) => { if (st.isActive && secEl) decodeSec((sec.id || '').toUpperCase()); },
     });
   });
 })();
@@ -672,4 +697,44 @@ window.addEventListener('langchange', () => {
       });
     });
   }
+})();
+
+/* ================= v18: line-mask reveals + parallax depth + tilt 3D titular ================= */
+(() => {
+  gsap.utils.toArray('.section-sub, .prod-lead').forEach((el) => {
+    el.classList.add('lm');
+    ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => el.classList.add('in') });
+  });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.utils.toArray('.film-breath span').forEach((el) => {
+    gsap.fromTo(el, { y: 46 }, {
+      y: -46, ease: 'none',
+      scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: .5 },
+    });
+  });
+  gsap.utils.toArray('.sheet-glass, .window').forEach((sh) => {
+    gsap.fromTo(sh, { scale: .985 }, {
+      scale: 1, ease: 'none',
+      scrollTrigger: { trigger: sh, start: 'top 90%', end: 'top 45%', scrub: .4 },
+    });
+  });
+  const ht = document.querySelector('#hero h1');
+  if (ht && window.matchMedia('(pointer: fine)').matches) {
+    addEventListener('pointermove', (e) => {
+      const x = (e.clientX / innerWidth - .5), y = (e.clientY / innerHeight - .5);
+      ht.style.transform = 'perspective(900px) rotateY(' + (x * 5).toFixed(2) + 'deg) rotateX(' + (-y * 4).toFixed(2) + 'deg)';
+    }, { passive: true });
+  }
+})();
+
+/* ================= v20: monitores REC para media provisorio ================= */
+(() => {
+  const sel = '.cap-card video, .cap-card img, .slide video, .slide img, .receipt video, .receipt img';
+  const wrap = () => document.querySelectorAll(sel).forEach((m) => {
+    if (m.parentElement && m.parentElement.classList.contains('mon-frame')) return;
+    const f = document.createElement('div'); f.className = 'mon-frame';
+    m.parentNode.insertBefore(f, m); f.appendChild(m);
+  });
+  wrap();
+  window.addEventListener('langchange', wrap);
 })();
