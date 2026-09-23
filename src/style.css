@@ -940,7 +940,7 @@ h1, h2, h3 { letter-spacing: -0.015em; }
 }
 
 /* ============ v23: web (>=1101px) - hero alineado, caps editoriales, hojas fantasma ============ */
-@media (min-width: 1101px) {
+@media (min-width: 761px) {
   .hero-stats { margin-top: clamp(28px, 5vh, 64px); }
   .sheet-glass {
     background: linear-gradient(180deg, rgba(6,10,16,.46), rgba(6,10,16,.26) 22% 78%, rgba(6,10,16,.46));
@@ -956,3 +956,9 @@ h1, h2, h3 { letter-spacing: -0.015em; }
   .cap-body h3 { font-size: 21px; }
   .cap-body p { font-size: 14px; }
 }
+
+/* ============ v25: verificabilidad + loader de marca ============ */
+#build-tag { position: fixed; left: 10px; bottom: 8px; z-index: 60; font-size: 9px; letter-spacing: .18em; color: rgba(255,255,255,.45); pointer-events: none; text-shadow: 0 1px 6px #000; }
+#loader { background: #04070c url('./assets/brand-og.jpg') center 30% / cover no-repeat; }
+#loader::after { content: ''; position: absolute; inset: 0; background: rgba(4,7,12,.82); }
+#loader > * { position: relative; z-index: 1; }
