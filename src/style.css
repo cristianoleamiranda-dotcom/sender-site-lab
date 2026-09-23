@@ -919,3 +919,22 @@ h1, h2, h3 { letter-spacing: -0.015em; }
   .about-grid { gap: 26px; }
   .about-text > p:first-of-type::first-letter { font-size: 2.6em; }
 }
+
+/* ============ v22: breakpoint 1100 (Chrome 'sitio de escritorio' en movil) ============ */
+@media (max-width: 1100px) {
+  .cap-grid { grid-template-columns: 1fr; }
+  .cap-sticky { position: static; }
+  .about-grid { grid-template-columns: 1fr; gap: 26px; }
+  .prod { grid-template-columns: 1fr; min-height: 0 !important; gap: 0; }
+  .prod-media { position: relative; top: 0; height: auto; aspect-ratio: 16/10; }
+  .prod-copy { padding: 6vh 0 8vh; }
+  .sheet-glass { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(8,13,22,.84); }
+  .dossier { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(4,8,14,.97); }
+  .film-grain { display: none; }
+  #cglow, #cursor { display: none !important; }
+  .film-breath { height: 24vh; }
+  .type-ring { display: none; }
+  .sheet-glass, .sheet { margin: 6vh auto; }
+  .shot-stage { width: 100vw; height: 92svh; margin-left: calc(50% - 50vw); border-radius: 0; }
+  .pull { margin: 16px 0 24px; font-size: 19px; }
+}

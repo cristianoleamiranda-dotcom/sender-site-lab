@@ -6,7 +6,7 @@
 import * as THREE from 'three';
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const COARSE = window.matchMedia('(pointer: coarse)').matches;
+const COARSE = window.matchMedia('(pointer: coarse), (max-width: 1100px)').matches;
 
 const canvas = document.createElement('canvas');
 canvas.id = 'bg3d';
