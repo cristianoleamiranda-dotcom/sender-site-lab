@@ -962,3 +962,27 @@ h1, h2, h3 { letter-spacing: -0.015em; }
 #loader { background: #04070c url('./assets/brand-og.jpg') center 30% / cover no-repeat; }
 #loader::after { content: ''; position: absolute; inset: 0; background: rgba(4,7,12,.82); }
 #loader > * { position: relative; z-index: 1; }
+
+/* ============ v26: knob firma + dossier marca + caps mayores + cero provisorios ============ */
+#dial-knob {
+  --rot: 0deg;
+  width: 78px; height: 78px; border-radius: 50%; flex: 0 0 auto; margin-left: auto;
+  border: 1px solid rgba(255,255,255,.22); cursor: grab; touch-action: none; position: relative;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.14), rgba(8,13,22,.9) 62%), conic-gradient(from 0deg, rgba(0,133,178,.5), rgba(30,115,190,.15) 30%, rgba(0,133,178,.5) 62%, rgba(30,115,190,.15) 90%, rgba(0,133,178,.5));
+  box-shadow: 0 10px 30px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.15);
+  transition: box-shadow .3s;
+}
+#dial-knob:active { cursor: grabbing; box-shadow: 0 6px 18px rgba(0,133,178,.45), inset 0 1px 0 rgba(255,255,255,.2); }
+#dial-knob:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+#dial-knob i {
+  position: absolute; left: 50%; top: 50%; width: 3px; height: 30px; border-radius: 2px;
+  background: linear-gradient(var(--cyan), rgba(0,133,178,.2)); transform-origin: 50% 100%;
+  transform: translate(-50%, -100%) rotate(var(--rot)); box-shadow: 0 0 10px rgba(0,133,178,.8);
+}
+#dial-knob::after { content: ''; position: absolute; inset: 26px; border-radius: 50%; background: rgba(4,8,14,.9); border: 1px solid rgba(255,255,255,.12); }
+.dial-top { align-items: center; }
+.dossier-head { background: rgba(4,8,14,.55) url('./assets/brand-og.jpg') center 42% / cover no-repeat; }
+.dossier-head > * { position: relative; text-shadow: 0 1px 8px #000; }
+@media (min-width: 761px) {
+  .cap-card { grid-template-columns: minmax(260px, 380px) 1fr; }
+}

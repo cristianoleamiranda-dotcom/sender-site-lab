@@ -10,7 +10,10 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Sender — Ingeniería RF y Broadcasting" />
   <meta property="og:description" content="Transmisores AM/FM, antenas HF, sistemas NAVTEX y torres. Más de 20 años de ingeniería chilena operando donde la señal no puede fallar." />
-  <meta property="og:image" content="https://cristianoleamiranda-dotcom.github.io/sender-site/assets/brand-og.jpg" />
+  <link rel="preload" as="image" href="./assets/hero-wide.jpg" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="./assets/fonts/man-600.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="./assets/fonts/sg-700.woff2" crossorigin>
+<meta property="og:image" content="https://cristianoleamiranda-dotcom.github.io/sender-site/assets/brand-og.jpg" />
   <meta property="og:url" content="https://cristianoleamiranda-dotcom.github.io/sender-site/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:locale" content="es_CL" />
@@ -388,6 +391,7 @@
 
           <div class="dial">
             <div class="dial-top">
+              <div id="dial-knob" role="slider" tabindex="0" aria-label="Sintonizar el espectro / Tune the spectrum" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
               <div class="freq-box"><span id="freq">490,0</span><span class="unit" id="unit">kHz</span></div>
               <div class="band-box"><span class="label" data-i18n="esp.bandlabel">Banda activa</span><strong id="band-name">NAVTEX</strong></div>
               <div class="band-thumbs">
@@ -501,7 +505,6 @@
         <div class="sec-head">
           <p class="label scramble reveal" data-i18n="prop.label" data-text="Propagación HF · Santiago → Rapa Nui">Propagación HF · Santiago → Rapa Nui</p>
           <span class="folio mono">05 / 07</span>
-          <span class="ph-badge inline mono" data-i18n="ph.badge">▸ PROVISORIO</span>
         </div>
         <div class="propagation reveal">
           <video class="prop-video" id="prop-video" muted playsinline preload="metadata"></video>
@@ -643,7 +646,6 @@
       <a class="footer-comm mono" href="https://wa.me/c/56983864148" target="_blank" rel="noopener" data-i18n="foot.comm">Comunidad WhatsApp ↗</a>
       <a class="footer-top" href="#hero" data-i18n="foot.top">Volver arriba ↑</a>
     </div>
-    <p class="ph-legend mono" data-i18n="ph.legend">Los elementos marcados ▸ PROVISORIO están completados con assets disponibles, a la espera de los videos finales.</p>
   </footer>
 
   <script type="module" src="/src/main.js"></script>
