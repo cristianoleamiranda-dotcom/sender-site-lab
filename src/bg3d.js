@@ -6,6 +6,7 @@
 import * as THREE from 'three';
 
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const COARSE = window.matchMedia('(pointer: coarse)').matches;
 
 const canvas = document.createElement('canvas');
 canvas.id = 'bg3d';
@@ -13,7 +14,7 @@ canvas.setAttribute('aria-hidden', 'true');
 document.body.appendChild(canvas);
 
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+renderer.setPixelRatio(COARSE ? 1 : Math.min(window.devicePixelRatio || 1, 1.75));
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 const scene = new THREE.Scene();
@@ -155,7 +156,7 @@ function frame() {
   });
 
   renderer.render(scene, camera);
-  if (!reduce) requestAnimationFrame(frame);
+  if (!reduce && !COARSE) requestAnimationFrame(frame);
 }
 frame();
 

@@ -240,7 +240,7 @@ function updateSpectrum(p) {
 }
 ScrollTrigger.create({
   trigger: '#espectro', start: 'top top', end: '+=320%',
-  pin: '.espectro-pin', scrub: 0.35, anticipatePin: 1, invalidateOnRefresh: true,
+  pin: window.matchMedia('(min-width: 901px)').matches ? '.espectro-pin' : false, scrub: 0.35, anticipatePin: 1, invalidateOnRefresh: true,
   onUpdate: (self) => updateSpectrum(self.progress),
 });
 updateSpectrum(0);
@@ -636,9 +636,12 @@ window.addEventListener('langchange', () => {
   fetch(V, { method: 'HEAD' }).then((r) => { if (!r.ok) throw new Error('x'); v.src = V; v.load(); }).catch(() => {});
   const CH = [0, .32, .55, .82];
   let tgt = 0, curT = 0;
+  let lastT = -1;
   const tickFilm = () => {
     curT += (tgt - curT) * 0.14;
-    if (v.duration && isFinite(v.duration)) v.currentTime = curT * Math.max(0, v.duration - .05);
+    if (v.duration && isFinite(v.duration) && Math.abs(curT - lastT) > 0.0022) {
+      v.currentTime = curT * Math.max(0, v.duration - .05); lastT = curT;
+    }
     requestAnimationFrame(tickFilm);
   };
   requestAnimationFrame(tickFilm);
