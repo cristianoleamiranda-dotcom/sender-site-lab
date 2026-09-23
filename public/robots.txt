@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cristianoleamiranda-dotcom.github.io/sender-site/sitemap.xml

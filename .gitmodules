@@ -1,0 +1,3 @@
+[submodule "vendor/motion-kit"]
+	path = vendor/motion-kit
+	url = https://github.com/cristianoleamiranda-dotcom/sender-motion-kit.git
