@@ -943,8 +943,8 @@ h1, h2, h3 { letter-spacing: -0.015em; }
 @media (min-width: 761px) {
   .hero-stats { margin-top: clamp(28px, 5vh, 64px); }
   .sheet-glass {
-    background: linear-gradient(180deg, rgba(6,10,16,.46), rgba(6,10,16,.26) 22% 78%, rgba(6,10,16,.46));
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    background: linear-gradient(180deg, rgba(6,10,16,.66), rgba(6,10,16,.5) 22% 78%, rgba(6,10,16,.66));
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-color: rgba(255,255,255,.08);
   }
   .cap-card { display: grid; grid-template-columns: minmax(180px, 240px) 1fr; gap: 26px; align-items: center; }
@@ -959,7 +959,7 @@ h1, h2, h3 { letter-spacing: -0.015em; }
 
 /* ============ v25: verificabilidad + loader de marca ============ */
 #build-tag { position: fixed; left: 10px; bottom: 8px; z-index: 60; font-size: 9px; letter-spacing: .18em; color: rgba(255,255,255,.45); pointer-events: none; text-shadow: 0 1px 6px #000; }
-#loader { background: #04070c url('./assets/brand-og.jpg') center 30% / cover no-repeat; }
+#loader { background: #04070c; }
 #loader::after { content: ''; position: absolute; inset: 0; background: rgba(4,7,12,.82); }
 #loader > * { position: relative; z-index: 1; }
 
@@ -981,8 +981,20 @@ h1, h2, h3 { letter-spacing: -0.015em; }
 }
 #dial-knob::after { content: ''; position: absolute; inset: 26px; border-radius: 50%; background: rgba(4,8,14,.9); border: 1px solid rgba(255,255,255,.12); }
 .dial-top { align-items: center; }
-.dossier-head { background: rgba(4,8,14,.55) url('./assets/brand-og.jpg') center 42% / cover no-repeat; }
+.dossier-head { position: relative; background: rgba(4,8,14,.55); }
 .dossier-head > * { position: relative; text-shadow: 0 1px 8px #000; }
 @media (min-width: 761px) {
   .cap-card { grid-template-columns: minmax(260px, 380px) 1fr; }
 }
+
+/* v26.2: brand-bg via inline style en HTML (ruta relativa a la pagina, no al css) */
+.brand-bg { position: absolute; inset: 0; background-position: center 35%; background-size: cover; background-repeat: no-repeat; opacity: .38; pointer-events: none; z-index: 0; }
+#loader > *:not(.brand-bg) { position: relative; z-index: 1; }
+.dossier-head > *:not(.brand-bg) { position: relative; z-index: 1; }
+
+/* ============ v27: declutter catalogo + agrupacion CTA ============ */
+.prod-copy { padding: 4vh 0 5vh; }
+.prod-copy .prod-lead { margin-bottom: 18px; }
+.prod-specs { margin-bottom: 0; }
+#catalogo #dossier-open { display: block; width: fit-content; margin: 34px auto 4px; }
+#catalogo .prod + .prod { margin-top: 2vh; }
