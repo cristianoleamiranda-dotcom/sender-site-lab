@@ -289,9 +289,10 @@ function drawScope() {
   sctx.stroke();
   sctx.shadowBlur = 0;
   phase += reduce ? 0 : 0.06;
-  requestAnimationFrame(drawScope);
 }
-drawScope();
+let scopeVisible = true;
+new IntersectionObserver((es) => { scopeVisible = es[0].isIntersecting; }, { rootMargin: '200px' }).observe(document.getElementById('espectro') || document.body);
+(function scopeLoop() { if (scopeVisible && !reduce) drawScope(); else requestAnimationFrame(scopeLoop); })();
 
 /* ================= PROYECTOS: SCROLL HORIZONTAL PINEADO ================= */
 const projNow = document.getElementById('proj-now');
@@ -381,7 +382,7 @@ window.addEventListener('langchange', () => {
   const video = document.getElementById('tx-video');
   const hud = document.getElementById('tx-hud-label');
   if (!stage || !video) return;
-  const VPATHS = ['./assets/videos/hero-cut.mp4', './assets/videos/cine.mp4', './assets/videos/tx-hero.mp4'];
+  const VPATHS = ['./assets/videos/hero-cut.mp4', './assets/videos/cine.mp4'];
   let hasVideo = false;
 
   const setHud = () => { hud.textContent = i18nT(hasVideo ? 'hero.video.on' : 'hero.video.off'); };
