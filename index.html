@@ -138,7 +138,7 @@
     </div>
 
     <!-- TRAYECTORIA -->
-    <section id="trayectoria" class="section sheet">
+    <section id="trayectoria" class="section window">
       <div class="container">
         <div class="sec-head">
           <p class="label scramble reveal" data-i18n="tray.label" data-text="01 — Trayectoria comprobada">01 — Trayectoria comprobada</p>
@@ -170,7 +170,8 @@
     </section>
 
     <!-- CAPACIDADES (con tomas 3D) -->
-    <section id="capacidades" class="section sheet">
+    <div class="film-breath mono" aria-hidden="true"><span data-i18n="breath.1">la película continúa — desliza</span></div>
+    <section id="capacidades" class="section sheet-glass">
       <div class="container cap-grid">
         <div class="cap-left">
           <div class="cap-sticky">
@@ -264,7 +265,8 @@
     </section>
 
     <!-- CATÁLOGO COMPLETO (índice editorial) -->
-    <section id="catalogo" class="section prod-section sheet">
+    <div class="film-breath mono" aria-hidden="true"><span data-i18n="breath.2">el equipo se reensambla mientras bajas</span></div>
+    <section id="catalogo" class="section prod-section sheet-glass">
     <div class="container">
       <div class="sec-head">
         <p class="label scramble reveal" data-i18n="cat.label" data-text="03 — Productos">03 — Productos</p>
@@ -374,26 +376,7 @@
   </article>
 
     <div class="container">
-      <details class="cat-index reveal">
-        <summary class="mono" data-i18n="cat.idx">Índice completo del catálogo (15 familias) →</summary>
-        <div class="cat-table">
-          <div class="cat-row"><span class="cat-n mono">01</span><span class="cat-name" data-i18n="cat.n1">Transmisores AM de estado sólido</span><span class="cat-spec mono">1000 / 2000 / 5000 W · 490–1700 kHz</span><span class="cat-tag mono">AM</span></div>
-          <div class="cat-row"><span class="cat-n mono">02</span><span class="cat-name" data-i18n="cat.n2">Amplificador Clase D</span><span class="cat-spec mono">1000 W · alta eficiencia</span><span class="cat-tag mono">AM</span></div>
-          <div class="cat-row"><span class="cat-n mono">03</span><span class="cat-name" data-i18n="cat.n3">Transmisores FM</span><span class="cat-spec mono">FM-30 a FM-1000 · 88–108 MHz</span><span class="cat-tag mono">FM</span></div>
-          <div class="cat-row"><span class="cat-n mono">04</span><span class="cat-name" data-i18n="cat.n4">Antena HF profesional</span><span class="cat-spec mono">1.6–30 MHz · 1 kW</span><span class="cat-tag mono">HF</span></div>
-          <div class="cat-row"><span class="cat-n mono">05</span><span class="cat-name" data-i18n="cat.n5">Antenas monopolo AM / MF</span><span class="cat-spec mono">510–1700 kHz · torre aterrizada</span><span class="cat-tag mono">AM</span></div>
-          <div class="cat-row"><span class="cat-n mono">06</span><span class="cat-name" data-i18n="cat.n6">Sistema NAVTEX profesional</span><span class="cat-spec mono">490 / 518 kHz · marítimo</span><span class="cat-tag mono">MF</span></div>
-          <div class="cat-row"><span class="cat-n mono">07</span><span class="cat-name" data-i18n="cat.n7">Amplificador MF</span><span class="cat-spec mono" data-i18n="cat.s7">para AM y NAVTEX</span><span class="cat-tag mono">MF</span></div>
-          <div class="cat-row"><span class="cat-n mono">08</span><span class="cat-name" data-i18n="cat.n8">Unidad de sintonía de antena (ATU)</span><span class="cat-spec mono" data-i18n="cat.s8">acople de antena automático</span><span class="cat-tag mono">AM/HF</span></div>
-          <div class="cat-row"><span class="cat-n mono">09</span><span class="cat-name" data-i18n="cat.n9">Procesador de audio</span><span class="cat-spec mono" data-i18n="cat.s9">optimización de modulación</span><span class="cat-tag mono">AUDIO</span></div>
-          <div class="cat-row"><span class="cat-n mono">10</span><span class="cat-name" data-i18n="cat.n10">Automatización de transmisiones</span><span class="cat-spec mono" data-i18n="cat.s10">operación sin personal</span><span class="cat-tag mono">SIST</span></div>
-          <div class="cat-row"><span class="cat-n mono">11</span><span class="cat-name" data-i18n="cat.n11">Enlace estudio–planta (STL)</span><span class="cat-spec mono">AM / FM · audio profesional</span><span class="cat-tag mono">ENLACE</span></div>
-          <div class="cat-row"><span class="cat-n mono">12</span><span class="cat-name" data-i18n="cat.n12">Torres contraventadas galvanizadas</span><span class="cat-spec mono" data-i18n="cat.s12">ingeniería, montaje y desmontaje</span><span class="cat-tag mono">INFRA</span></div>
-          <div class="cat-row"><span class="cat-n mono">13</span><span class="cat-name" data-i18n="cat.n13">Cable coaxial 1/2" Super Flex · LMR-400</span><span class="cat-spec mono" data-i18n="cat.s13">baja pérdida profesional</span><span class="cat-tag mono">RF</span></div>
-          <div class="cat-row"><span class="cat-n mono">14</span><span class="cat-name" data-i18n="cat.n14">Condensadores de alta potencia</span><span class="cat-spec mono" data-i18n="cat.s14">RF y transmisión</span><span class="cat-tag mono">COMP</span></div>
-          <div class="cat-row"><span class="cat-n mono">15</span><span class="cat-name" data-i18n="cat.n15">Circuitos integrados RF</span><span class="cat-spec mono" data-i18n="cat.s15">electrónica profesional</span><span class="cat-tag mono">COMP</span></div>
-        </div>
-      </details>
+      <button class="btn btn-ghost dossier-open mono" id="dossier-open" data-i18n="cat.dossier">Abrir dossier técnico (15 familias) →</button>
     </div>
   </section>
 
@@ -459,7 +442,8 @@
     </section>
 
     <!-- PROYECTOS -->
-    <section id="proyectos" class="sheet sheet-proj">
+    <div class="film-breath mono" aria-hidden="true"><span data-i18n="breath.3">tres mil setecientos cincuenta y nueve kilómetros de ingeniería</span></div>
+    <section id="proyectos" class="sheet-glass sheet-proj">
       <div class="proj-pin">
         <div class="proj-head container">
           <div>
@@ -564,7 +548,7 @@
     </section>
 
     <!-- NOSOTROS -->
-    <section id="nosotros" class="section sheet">
+    <section id="nosotros" class="section window">
       <div class="container">
         <div class="sec-head">
           <p class="label scramble reveal" data-i18n="about.label" data-text="06 — Quiénes somos">06 — Quiénes somos</p>
@@ -669,5 +653,31 @@
   </footer>
 
   <script type="module" src="/src/main.js"></script>
+
+  <div class="dossier" id="dossier" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Dossier técnico">
+    <div class="dossier-head">
+      <span class="mono label" data-i18n="cat.dtitle">Dossier técnico · 15 familias</span>
+      <button class="btn btn-ghost mono" id="dossier-close" data-i18n="cat.close">Cerrar ✕</button>
+    </div>
+    <div class="dossier-body">
+      <div class="cat-table">
+          <div class="cat-row"><span class="cat-n mono">01</span><span class="cat-name" data-i18n="cat.n1">Transmisores AM de estado sólido</span><span class="cat-spec mono">1000 / 2000 / 5000 W · 490–1700 kHz</span><span class="cat-tag mono">AM</span></div>
+          <div class="cat-row"><span class="cat-n mono">02</span><span class="cat-name" data-i18n="cat.n2">Amplificador Clase D</span><span class="cat-spec mono">1000 W · alta eficiencia</span><span class="cat-tag mono">AM</span></div>
+          <div class="cat-row"><span class="cat-n mono">03</span><span class="cat-name" data-i18n="cat.n3">Transmisores FM</span><span class="cat-spec mono">FM-30 a FM-1000 · 88–108 MHz</span><span class="cat-tag mono">FM</span></div>
+          <div class="cat-row"><span class="cat-n mono">04</span><span class="cat-name" data-i18n="cat.n4">Antena HF profesional</span><span class="cat-spec mono">1.6–30 MHz · 1 kW</span><span class="cat-tag mono">HF</span></div>
+          <div class="cat-row"><span class="cat-n mono">05</span><span class="cat-name" data-i18n="cat.n5">Antenas monopolo AM / MF</span><span class="cat-spec mono">510–1700 kHz · torre aterrizada</span><span class="cat-tag mono">AM</span></div>
+          <div class="cat-row"><span class="cat-n mono">06</span><span class="cat-name" data-i18n="cat.n6">Sistema NAVTEX profesional</span><span class="cat-spec mono">490 / 518 kHz · marítimo</span><span class="cat-tag mono">MF</span></div>
+          <div class="cat-row"><span class="cat-n mono">07</span><span class="cat-name" data-i18n="cat.n7">Amplificador MF</span><span class="cat-spec mono" data-i18n="cat.s7">para AM y NAVTEX</span><span class="cat-tag mono">MF</span></div>
+          <div class="cat-row"><span class="cat-n mono">08</span><span class="cat-name" data-i18n="cat.n8">Unidad de sintonía de antena (ATU)</span><span class="cat-spec mono" data-i18n="cat.s8">acople de antena automático</span><span class="cat-tag mono">AM/HF</span></div>
+          <div class="cat-row"><span class="cat-n mono">09</span><span class="cat-name" data-i18n="cat.n9">Procesador de audio</span><span class="cat-spec mono" data-i18n="cat.s9">optimización de modulación</span><span class="cat-tag mono">AUDIO</span></div>
+          <div class="cat-row"><span class="cat-n mono">10</span><span class="cat-name" data-i18n="cat.n10">Automatización de transmisiones</span><span class="cat-spec mono" data-i18n="cat.s10">operación sin personal</span><span class="cat-tag mono">SIST</span></div>
+          <div class="cat-row"><span class="cat-n mono">11</span><span class="cat-name" data-i18n="cat.n11">Enlace estudio–planta (STL)</span><span class="cat-spec mono">AM / FM · audio profesional</span><span class="cat-tag mono">ENLACE</span></div>
+          <div class="cat-row"><span class="cat-n mono">12</span><span class="cat-name" data-i18n="cat.n12">Torres contraventadas galvanizadas</span><span class="cat-spec mono" data-i18n="cat.s12">ingeniería, montaje y desmontaje</span><span class="cat-tag mono">INFRA</span></div>
+          <div class="cat-row"><span class="cat-n mono">13</span><span class="cat-name" data-i18n="cat.n13">Cable coaxial 1/2" Super Flex · LMR-400</span><span class="cat-spec mono" data-i18n="cat.s13">baja pérdida profesional</span><span class="cat-tag mono">RF</span></div>
+          <div class="cat-row"><span class="cat-n mono">14</span><span class="cat-name" data-i18n="cat.n14">Condensadores de alta potencia</span><span class="cat-spec mono" data-i18n="cat.s14">RF y transmisión</span><span class="cat-tag mono">COMP</span></div>
+          <div class="cat-row"><span class="cat-n mono">15</span><span class="cat-name" data-i18n="cat.n15">Circuitos integrados RF</span><span class="cat-spec mono" data-i18n="cat.s15">electrónica profesional</span><span class="cat-tag mono">COMP</span></div>
+        </div>
+    </div>
+  </div>
 </body>
 </html>

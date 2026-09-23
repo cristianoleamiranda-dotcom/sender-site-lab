@@ -652,3 +652,24 @@ window.addEventListener('langchange', () => {
     });
   });
 })();
+
+/* ================= LAB v2: dossier overlay + tilt 3D de sheets ================= */
+(() => {
+  const d = document.getElementById('dossier');
+  const open = document.getElementById('dossier-open');
+  const close = document.getElementById('dossier-close');
+  if (d && open && close) {
+    const set = (v) => { d.classList.toggle('open', v); d.setAttribute('aria-hidden', String(!v)); if (v) close.focus(); else open.focus(); };
+    open.addEventListener('click', () => set(true));
+    close.addEventListener('click', () => set(false));
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && d.classList.contains('open')) set(false); });
+  }
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    gsap.utils.toArray('.sheet-glass').forEach((sh) => {
+      gsap.fromTo(sh, { rotateX: 3.2, transformPerspective: 1200 }, {
+        rotateX: 0, ease: 'none',
+        scrollTrigger: { trigger: sh, start: 'top 92%', end: 'top 40%', scrub: .4 },
+      });
+    });
+  }
+})();
