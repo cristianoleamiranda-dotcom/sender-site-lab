@@ -1001,3 +1001,27 @@ h1, h2, h3 { letter-spacing: -0.015em; }
 
 /* ============ v28: perf - paint diferido en secciones sin pin ============ */
 #trayectoria, #capacidades, #nosotros, #contacto { content-visibility: auto; contain-intrinsic-size: auto 1200px; }
+
+/* ============ v30 REDISENO: portada full-bleed catalogo (P19) ============ */
+.cat-cover { position: relative; min-height: 96svh; display: flex; align-items: flex-end; overflow: hidden; }
+.cover-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; transform: scale(1.06); }
+.cover-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,20,32,.30) 0%, rgba(13,20,32,.62) 45%, rgba(13,20,32,.94) 88%, var(--bg) 100%); }
+.cover-copy { position: relative; z-index: 2; width: min(1320px, 92vw); margin: 0 auto; padding: 0 0 8vh; color: #fff; }
+.cover-copy .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.cover-copy .label { color: #8fd0e8; }
+.cover-copy .folio { color: rgba(255,255,255,.6); }
+.cover-copy h2 { margin: 14px 0 12px; color: #fff; font-size: clamp(42px, 8.5vw, 104px); line-height: .98; letter-spacing: -.02em; text-wrap: balance; }
+.cover-copy .section-sub { color: rgba(255,255,255,.82); max-width: 56ch; }
+.cover-cue { display: inline-block; margin-top: 26px; font-size: 11px; letter-spacing: .34em; color: rgba(255,255,255,.66); animation: cue 2.2s ease-in-out infinite; }
+@keyframes cue { 0%,100% { transform: translateY(0); opacity: .66; } 50% { transform: translateY(7px); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .cover-cue { animation: none; } .cover-bg { transform: none; } }
+
+/* ============ v30 REDISENO: velo de capitulo (P13) ============ */
+#chapter-veil { position: fixed; inset: 0; z-index: 80; background: #0b1220; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility 0s linear .3s; pointer-events: none; }
+#chapter-veil.on { opacity: 1; visibility: visible; transition: opacity .3s ease; }
+.veil-inner { text-align: center; padding: 0 6vw; }
+.veil-folio { display: block; color: #8fd0e8; font-size: 12px; letter-spacing: .3em; margin-bottom: 16px; }
+.veil-title { margin: 0; color: #fff; font-size: clamp(32px, 6.6vw, 80px); font-weight: 500; letter-spacing: -.01em; line-height: 1.02; }
+.veil-line { display: block; width: min(420px, 60vw); height: 1px; background: rgba(255,255,255,.55); margin: 28px auto 0; transform: scaleX(0); transition: transform .55s cubic-bezier(.22,1,.36,1) .08s; }
+#chapter-veil.on .veil-line { transform: scaleX(1); }
+@media (prefers-reduced-motion: reduce) { #chapter-veil { display: none; } }

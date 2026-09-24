@@ -784,3 +784,32 @@ window.addEventListener('langchange', () => {
   });
   (function loop() { knobSync(); requestAnimationFrame(loop); })();
 })();
+
+/* ============ v30: velo de transicion entre capitulos (P13) ============ */
+(() => {
+  const veil = document.getElementById('chapter-veil');
+  if (!veil || typeof ScrollTrigger === 'undefined') return;
+  const folioEl = veil.querySelector('.veil-folio');
+  const titleEl = veil.querySelector('.veil-title');
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let busy = false, armed = false;
+  setTimeout(() => { armed = true; }, 3000);
+  document.querySelectorAll('.folio').forEach((f) => {
+    const sec = f.closest('section');
+    if (!sec || sec.id === 'hero' || sec.id === 'cine') return;
+    const h = sec.querySelector('h2, h1');
+    if (!h) return;
+    const fire = () => {
+      if (busy || !armed) return;
+      busy = true;
+      folioEl.textContent = f.textContent.trim();
+      titleEl.textContent = h.textContent.trim();
+      veil.classList.add('on');
+      setTimeout(() => {
+        veil.classList.remove('on');
+        setTimeout(() => { busy = false; }, 340);
+      }, 640);
+    };
+    ScrollTrigger.create({ trigger: sec, start: 'top 55%', onEnter: fire, onEnterBack: fire });
+  });
+})();
