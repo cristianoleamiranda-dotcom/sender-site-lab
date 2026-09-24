@@ -1025,3 +1025,41 @@ h1, h2, h3 { letter-spacing: -0.015em; }
 .veil-line { display: block; width: min(420px, 60vw); height: 1px; background: rgba(255,255,255,.55); margin: 28px auto 0; transform: scaleX(0); transition: transform .55s cubic-bezier(.22,1,.36,1) .08s; }
 #chapter-veil.on .veil-line { transform: scaleX(1); }
 @media (prefers-reduced-motion: reduce) { #chapter-veil { display: none; } }
+
+/* ============ v31 REDISEÑO VISIBLE ============ */
+/* Nav: pill de vidrio flotante (siempre) */
+.nav {
+  top: 14px; left: 50%; right: auto; bottom: auto; transform: translateX(-50%);
+  width: min(1240px, 94vw); border-radius: 999px;
+  background: rgba(6,10,16,.55); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.10);
+  padding: 12px clamp(18px, 3vw, 30px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+.nav.scrolled { background: rgba(6,10,16,.85); padding-block: 10px; box-shadow: 0 14px 50px rgba(0,0,0,.5); }
+
+/* Hero: titulo con gradiente de marca, mas grande */
+.hero-title {
+  font-size: clamp(52px, 10.5vw, 150px);
+  background: linear-gradient(102deg, #ffffff 18%, #cfeaf8 46%, #4da3e0 76%, #0085b2 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+/* Stats: tira editorial con hairlines */
+.hero-stats { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid rgba(255,255,255,.16); padding-top: 20px; max-width: 760px; }
+.hero-stats .stat { padding: 0 clamp(16px, 2.4vw, 30px); border-left: 1px solid rgba(255,255,255,.13); }
+.hero-stats .stat:first-child { border-left: 0; padding-left: 0; }
+
+/* Numeros de capitulo gigantes outline (marca editorial) */
+section[data-wm] { position: relative; }
+section[data-wm]::before {
+  content: attr(data-wm);
+  position: absolute; top: -.14em; right: .03em; z-index: 0;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(150px, 26vw, 380px); line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.075);
+  pointer-events: none; user-select: none;
+}
+@media (max-width: 760px) { section[data-wm]::before { font-size: 120px; top: -.1em; } }
+
+/* Stacks de producto enmarcados */
+.prod-stack { border-radius: 22px; box-shadow: 0 40px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.09); overflow: hidden; }
